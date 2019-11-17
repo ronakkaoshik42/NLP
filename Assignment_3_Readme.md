@@ -7,9 +7,14 @@ Each tweet was hence converted into a vector of size 1*768. These 768 features a
 The core model consists of the following layers
 Layer 1: An embedding layer of a vector size of 768.
 Layer 2: 128 cell bi-directional LSTM layers, where the embedding data is fed to the network. I added a dropout of 0.2 this is used to prevent overfitting.
-Layer 3: A 512 layer dense network which takes in the input from the LSTM layer. A Dropout of 0.5 is added here.
-Layer 4: A 10 layer dense network with softmax activation, each class is used to represent a sentiment category, with class 1 representing sentiment score between 0.0 to 0.1 and class 10 representing a sentiment score between 0.9 to 1.
+Layer 3: A 20 layer GRU layer which takes in the input from the LSTM layer. A Dropout of 0.2 is added here.
+Layer 4: A 3 layer dense network at the output with softmax activation, each class is used to represent a sentiment category.
+
+accuracy, f1_score, precision (Macro-Avg)
+0.4820759766174549, 0.47512554012561875, 0.4885379824490392 
 
 Model 2:
-The only difference is the embeddings are used from the flair library and are of the size 35*3072. These are set after padding all embeddings equally.
-These are
+The only difference is the embeddings are used from the flair library and are of the size 31*3072. These are set as training and testing after padding all embeddings equally.
+
+accuracy, f1_score, precision (Macro-Avg)
+0.5163188872967511, 0.5129973308296367, 0.5214308757970778
